@@ -1,38 +1,22 @@
+import { TextInput, DateInput, CheckboxInput } from './input';
 const DOMController = function() {
     this.body = document.querySelector('body');
 }
 
-DOMController.prototype.convertObject = function (object) {
+DOMController.prototype.renderTodo = function (object) {
     const container = document.createElement('div');
 
     container.style.border = '2px solid black';
 
-    const objectKeys = Object.keys(object);
+    const title = new TextInput('Title: ', 'title', object.title);
+    const description = new TextInput('Description', 'description', object.description);
+    const dueDate = new DateInput('Date: ', 'dueDate', object.dueDate);
+    const completed = new CheckboxInput('Completed: ', 'completed', false);
 
-    const titleInput = this.createInput('title', 'text', object.title);
-    const descriptionInput = this.createInput('description', 'text', object.description);
-    const dueDateInput = this.createInput('date', 'date', object.dueDate);
-    const noteList = document.createElement('ul');
-    let index = 0;
-
-    for (const note of object.notes) {
-        index++;
-        const noteItem = document.createElement('li');
-        noteItem.appendChild(this.createInput(`note${index}`, 'text', note));
-        console.log(index);
-        noteList.appendChild(noteItem);
-    }
-    // for (const key of objectKeys) {
-    //     const propertyDiv = document.createElement('div');
-    //     propertyDiv.textContent = `${key}: ${object[key]}`;
-
-    //     container.appendChild(propertyDiv);
-    // }
-
-    container.appendChild(titleInput);
-    container.appendChild(descriptionInput);
-    container.appendChild(dueDateInput);
-    container.appendChild(noteList);
+    container.appendChild(title.getContainer());
+    container.appendChild(dueDate.getContainer());
+    container.appendChild(description.getContainer());
+    container.appendChild(completed.getContainer());
 
     return container;
 }

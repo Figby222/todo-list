@@ -13,5 +13,5 @@ const DOMCtrl = new DOMController();
 
 DOMCtrl.insertElement(element);
 
-const DOMReady = DOMCtrl.convertObject(myTodo);
+const DOMReady = DOMCtrl.renderTodo(myTodo);
 DOMCtrl.insertElement(DOMReady);
