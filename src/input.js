@@ -34,17 +34,9 @@ const TextInput = function(label, id, value) {
     this.DOMInput.id = id;
     this.DOMInput.name = id;
     this.DOMInput.value = value;
-
-
-
-
 };
 
 Object.setPrototypeOf(TextInput.prototype, Input.prototype);
-
-
-
-
 
 const DateInput = function(label, id, value) {
     this.container = document.createElement('div');
@@ -95,7 +87,5 @@ CheckboxInput.prototype.getContainer = function () {
     
     return this.container;
 };
-
-
 
 export { TextInput, DateInput, CheckboxInput };

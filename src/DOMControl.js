@@ -21,27 +21,6 @@ DOMController.prototype.renderTodo = function (object) {
     return container;
 }
 
-DOMController.prototype.createInput = function (labelId, type, value) {
-    const container = document.createElement('div');
-
-    const label = document.createElement('label');
-    label.for = labelId;
-    label.textContent = `${labelId.toUpperCase()}: `;
-
-    const input = document.createElement('input');
-    
-    input.type = type;
-    input.id = labelId;
-    input.name = labelId;
-    input.value = value;
-    
-    container.appendChild(label);
-    container.appendChild(input);
-
-    return container;
-
-}
-
 DOMController.prototype.insertElement = (element, query = 'body') => {
     query = document.querySelector(query);
 
