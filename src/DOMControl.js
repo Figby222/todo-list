@@ -8,10 +8,10 @@ DOMController.prototype.renderTodo = function (object) {
 
     container.style.border = '2px solid black';
 
-    const title = new TextInput('Title: ', 'title', object.title);
-    const description = new TextInput('Description', 'description', object.description);
-    const dueDate = new DateInput('Date: ', 'dueDate', object.dueDate);
-    const completed = new CheckboxInput('Completed: ', 'completed', false);
+    const title = new TextInput(object, 'Title: ', 'title', object.title);
+    const description = new TextInput(object, 'Description', 'description', object.description);
+    const dueDate = new DateInput(object, 'Date: ', 'dueDate', object.dueDate);
+    const completed = new CheckboxInput(object, 'Completed: ', 'completed', false);
 
     container.appendChild(title.getContainer());
     container.appendChild(dueDate.getContainer());

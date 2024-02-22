@@ -12,8 +12,8 @@ Input.prototype.getContainer = function () {
 };
 
 Input.prototype.setValue = function(value) {
-    this.value = value;
-    this.DOMInput.value = value;
+    object[id] = value;
+    console.log(object);
 };
 
 Input.prototype.setLabel = function(label) {
@@ -21,7 +21,7 @@ Input.prototype.setLabel = function(label) {
     this.DOMLabel.textContent = label;
 };
 
-const TextInput = function(label, id, value) {
+const TextInput = function(object, label, id, value) {
     this.container = document.createElement('div');
     this.container.classList.add('input-container');
 
@@ -34,11 +34,14 @@ const TextInput = function(label, id, value) {
     this.DOMInput.id = id;
     this.DOMInput.name = id;
     this.DOMInput.value = value;
+    this.DOMInput.addEventListener('input', (e) => {
+        object[id] = e.target.value;
+    });
 };
 
 Object.setPrototypeOf(TextInput.prototype, Input.prototype);
 
-const DateInput = function(label, id, value) {
+const DateInput = function(object, label, id, value) {
     this.container = document.createElement('div');
     this.container.classList.add('input-container');
 
@@ -51,11 +54,15 @@ const DateInput = function(label, id, value) {
     this.DOMInput.id = id;
     this.DOMInput.name = id;
     this.DOMInput.value = value;
+    
+    this.DOMInput.addEventListener('input', (e) => {
+        object[id] = e.target.value;
+    });
 };
 
 Object.setPrototypeOf(DateInput.prototype, Input.prototype);
 
-const CheckboxInput = function(label, id, checked) {
+const CheckboxInput = function(object, label, id, checked) {
     this.container = document.createElement('div');
     this.container.classList.add('input-container');
 
@@ -68,6 +75,10 @@ const CheckboxInput = function(label, id, checked) {
     this.DOMInput.id = id;
     this.DOMInput.name = id;
     this.DOMInput.checked = checked;
+
+    this.DOMInput.addEventListener('input', (e) => {
+        object[id] = e.target.checked;
+    });
 };
 
 CheckboxInput.setChecked = function ()  {
