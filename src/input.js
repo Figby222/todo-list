@@ -99,4 +99,39 @@ CheckboxInput.prototype.getContainer = function () {
     return this.container;
 };
 
-export { TextInput, DateInput, CheckboxInput };
+const Select = function (object, label, id, options) {
+    this.container = document.createElement('div');
+
+    this.DOMLabel = document.createElement('label');
+    this.DOMLabel.for = id;
+    this.DOMLabel.textContent = label;
+
+    this.DOMSelect = document.createElement('select');
+    this.DOMSelect.id = id;
+    this.DOMSelect.name = id;
+
+    for (const option of options) {
+        const DOMOption = document.createElement('option');
+        DOMOption.value = option;
+        DOMOption.textContent = option;
+
+        this.DOMSelect.appendChild(DOMOption);
+    }
+
+    this.DOMSelect.addEventListener('change', (e) => {
+        object[id] = e.target.value;
+    });
+}
+
+Object.setPrototypeOf(Select.prototype, Input.prototype);
+
+Select.prototype.getContainer = function() {
+    this.container.innerHTML = '';
+
+    this.container.appendChild(this.DOMLabel);
+    this.container.appendChild(this.DOMSelect);
+
+    return this.container;
+}
+
+export { TextInput, DateInput, CheckboxInput, Select };

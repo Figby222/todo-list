@@ -32,4 +32,8 @@ Todo.prototype.changeCompletionStatus = function() {
     this.complete = !(this.complete);
 }
 
+Todo.prototype.completeTodo = function () {
+    
+}
+
 export default Todo;
