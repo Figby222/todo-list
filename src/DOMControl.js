@@ -13,12 +13,23 @@ DOMController.prototype.renderTodo = function (object) {
     const dueDate = new DateInput(object, 'Date: ', 'dueDate', object.dueDate);
     const completed = new CheckboxInput(object, 'Completed: ', 'completed', false);
     const priority = new Select(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
+    const completeButton = document.createElement('button');
+    completeButton.textContent = 'Complete Todo';
+    
+    completeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        container.remove();
+
+        // delete object from database
+    });
 
     container.appendChild(title.getContainer());
     container.appendChild(dueDate.getContainer());
     container.appendChild(description.getContainer());
     container.appendChild(completed.getContainer());
     container.appendChild(priority.getContainer());
+    container.appendChild(completeButton);
 
     return container;
 }
