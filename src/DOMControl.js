@@ -38,12 +38,15 @@ DOMController.prototype.removeTodo = function(container, object) {
     // delete object;
 }
 
-DOMController.prototype.renderProject = function(todoList) {
+DOMController.prototype.renderProject = function(project) {
     const container = document.createElement('div');
 
-    todoList.forEach((todo) => {
-        container.appendChild(this.renderTodo(todo));
-    });
+    
+
+    const title = new TextInput(project, 'Title: ', `${project.title}-title`, project.title)
+    const description = new TextInput(project, 'Description: ', `${project.title}-description`, project.description);
+
+    
 
     const completeProject = document.createElement('button');
     completeProject.textContent = 'Complete Project';
@@ -54,8 +57,15 @@ DOMController.prototype.renderProject = function(todoList) {
         this.removeProject(container);
     })
 
+    container.appendChild(title.getContainer());
+    container.appendChild(description.getContainer());
+
+    project.todoList.forEach((todo) => {
+        container.appendChild(this.renderTodo(todo));
+    });
+
     container.appendChild(completeProject);
-    
+
     container.style.border = '2px solid black';
     this.insertElement(container);
 }
