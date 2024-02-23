@@ -39,13 +39,35 @@ DOMController.prototype.removeTodo = function(container, object) {
 }
 
 DOMController.prototype.renderProject = function(todoList) {
+    const container = document.createElement('div');
+
     todoList.forEach((todo) => {
-        this.insertElement(this.renderTodo(todo));
+        container.appendChild(this.renderTodo(todo));
     });
+
+    const completeProject = document.createElement('button');
+    completeProject.textContent = 'Complete Project';
+
+    completeProject.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        this.removeProject(container);
+    })
+
+    container.appendChild(completeProject);
+    
+    container.style.border = '2px solid black';
+    this.insertElement(container);
+}
+
+DOMController.prototype.removeProject = function(project) {
+    project.remove();
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
-    query = document.querySelector(query);
+    query = 
+        !(query == 'body') ? query :
+        document.querySelector(query);
 
     query.appendChild(element);
 }
