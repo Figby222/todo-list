@@ -19,9 +19,7 @@ DOMController.prototype.renderTodo = function (object) {
     completeButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        container.remove();
-
-        // delete object from database
+        this.removeTodo(container);
     });
 
     container.appendChild(title.getContainer());
@@ -32,6 +30,12 @@ DOMController.prototype.renderTodo = function (object) {
     container.appendChild(completeButton);
 
     return container;
+}
+
+DOMController.prototype.removeTodo = function(container, object) {
+    container.remove();
+
+    // delete object;
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
