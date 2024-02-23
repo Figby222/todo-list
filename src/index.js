@@ -3,6 +3,8 @@ import DOMController from './DOMControl.js';
 
 console.log('hi');
 
+let project = [];
+
 const myTodo = new Todo("Todo 1", "My first todo", '2024-09-01', 'high', ['hello', 'hello', 'hello2']);
 console.log(myTodo);
 
@@ -11,11 +13,20 @@ element.textContent = 'hello';
 
 const DOMCtrl = new DOMController();
 
-DOMCtrl.insertElement(element);
+// DOMCtrl.insertElement(element);
 
-const DOMReady = DOMCtrl.renderTodo(myTodo);
-DOMCtrl.insertElement(DOMReady);
+// const DOMReady = DOMCtrl.renderTodo(myTodo);
+// DOMCtrl.insertElement(DOMReady);
 
 const getPizza  = new Todo('Get Pizza', 'Cheese Pizza', '2024-03-01', 'high');
 
-DOMCtrl.insertElement(DOMCtrl.renderTodo(getPizza))
+// DOMCtrl.insertElement(DOMCtrl.renderTodo(getPizza))
+
+project.push(myTodo);
+project.push(getPizza);
+
+DOMCtrl.renderProject(project);
+
+// project.forEach((todo) => {
+//     DOMCtrl.insertElement(DOMCtrl.renderTodo(todo));
+// })

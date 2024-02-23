@@ -38,6 +38,12 @@ DOMController.prototype.removeTodo = function(container, object) {
     // delete object;
 }
 
+DOMController.prototype.renderProject = function(todoList) {
+    todoList.forEach((todo) => {
+        this.insertElement(this.renderTodo(todo));
+    });
+}
+
 DOMController.prototype.insertElement = (element, query = 'body') => {
     query = document.querySelector(query);
 
