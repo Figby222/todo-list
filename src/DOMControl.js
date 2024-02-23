@@ -1,4 +1,4 @@
-import { TextInput, DateInput, CheckboxInput, Select } from './input';
+import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input';
 const DOMController = function() {
     this.body = document.querySelector('body');
 }
@@ -8,11 +8,11 @@ DOMController.prototype.renderTodo = function (object) {
 
     container.style.border = '2px solid black';
 
-    const title = new TextInput(object, 'Title: ', 'title', object.title);
-    const description = new TextInput(object, 'Description', 'description', object.description);
-    const dueDate = new DateInput(object, 'Date: ', 'dueDate', object.dueDate);
-    const completed = new CheckboxInput(object, 'Completed: ', 'completed', false);
-    const priority = new Select(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
+    const title = new DOMTextInput(object, 'Title: ', 'title', object.title);
+    const description = new DOMTextInput(object, 'Description', 'description', object.description);
+    const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
+    const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
+    const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
     const completeButton = document.createElement('button');
     completeButton.textContent = 'Complete Todo';
     
@@ -43,8 +43,8 @@ DOMController.prototype.renderProject = function(project) {
 
     
 
-    const title = new TextInput(project, 'Title: ', `${project.title}-title`, project.title)
-    const description = new TextInput(project, 'Description: ', `${project.title}-description`, project.description);
+    const title = new DOMTextInput(project, 'Title: ', `${project.title}-title`, project.title)
+    const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
 
     
 
