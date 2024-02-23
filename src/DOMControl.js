@@ -3,7 +3,7 @@ const DOMController = function() {
     this.body = document.querySelector('body');
 }
 
-DOMController.prototype.renderTodo = function (object) {
+DOMController.prototype.renderTodo = function (object, project) {
     const container = document.createElement('div');
 
     container.style.border = '2px solid black';
@@ -19,7 +19,8 @@ DOMController.prototype.renderTodo = function (object) {
     completeButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        this.removeTodo(container);
+        this.removeTodo(container); // remove from DOM
+        project.removeTodo(object); // remove from project
     });
 
     container.appendChild(title.getContainer());
@@ -32,10 +33,8 @@ DOMController.prototype.renderTodo = function (object) {
     return container;
 }
 
-DOMController.prototype.removeTodo = function(container, object) {
+DOMController.prototype.removeTodo = function(container) {
     container.remove();
-
-    // delete object;
 }
 
 DOMController.prototype.renderProject = function(project) {
@@ -61,7 +60,7 @@ DOMController.prototype.renderProject = function(project) {
     container.appendChild(description.getContainer());
 
     project.todoList.forEach((todo) => {
-        container.appendChild(this.renderTodo(todo));
+        container.appendChild(this.renderTodo(todo, project));
     });
 
     container.appendChild(completeProject);
