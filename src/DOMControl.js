@@ -4,6 +4,15 @@ import Project from './project.js';
 const DOMController = function() {
     this.body = document.querySelector('body');
     this.currentRenderedProject;
+    this.addProjectButton = document.querySelector('.newProject');
+
+    this.addProjectButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const project = new Project();
+        this.createProject(project);
+    });
+
 }
 
 DOMController.prototype.renderTodo = function (object, project) {
@@ -42,7 +51,7 @@ DOMController.prototype.removeElement = function(container) {
 
 DOMController.prototype.createProject = function(project) {
     const DOMNav = document.querySelector('.projects');
-
+    
     const projectButton = document.createElement('button');
     projectButton.textContent = project.title;
     
@@ -52,7 +61,9 @@ DOMController.prototype.createProject = function(project) {
         this.renderProject(project);
     });
 
-    DOMNav.appendChild(projectButton);
+    DOMNav.insertBefore(projectButton, this.addProjectButton);
+
+    this.renderProject(project);
 }
 
 DOMController.prototype.renderProject = function(project) {
@@ -91,12 +102,12 @@ DOMController.prototype.renderProject = function(project) {
     container.appendChild(completeProject);
 
     container.style.border = '2px solid red';
-    this.insertElement(container);
+    this.insertElement(container, '.todos');
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
     query = 
-        !(query == 'body') ? query :
+        (query == 'body') ? query :
         document.querySelector(query);
 
     query.appendChild(element);
