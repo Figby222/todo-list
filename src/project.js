@@ -13,4 +13,8 @@ Project.prototype.removeTodo = function (todo) {
     console.log(this);
 }
 
+Project.prototype.addTodo = function (todo) {
+    this.todoList.push(todo);
+}
+
 export default Project;
