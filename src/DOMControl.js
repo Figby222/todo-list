@@ -80,7 +80,7 @@ DOMController.prototype.renderProject = function(project) {
 
     
 
-    const title = new DOMTextInput(project, 'Title: ', project.title, project.title)
+    const title = new DOMTextInput(project, 'Title: ', 'title', project.title)
     // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
 
     
