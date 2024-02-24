@@ -55,7 +55,8 @@ DOMController.prototype.createProject = function(project) {
     
     const projectButton = document.createElement('button');
     projectButton.textContent = project.title;
-    
+    projectButton.classList.add(project.title);
+
     projectButton.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -79,7 +80,7 @@ DOMController.prototype.renderProject = function(project) {
 
     
 
-    const title = new DOMTextInput(project, 'Title: ', `${project.title}-title`, project.title)
+    const title = new DOMTextInput(project, 'Title: ', project.title, project.title)
     // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
 
     
@@ -109,8 +110,11 @@ DOMController.prototype.renderProject = function(project) {
 
     completeProject.addEventListener('click', (e) => {
         e.preventDefault();
+        const projectButton = document.querySelector(`.projects > .${project.title}`);
 
         this.removeElement(container);
+        projectButton.remove();
+
     })
 
     container.appendChild(newTodoButton);
