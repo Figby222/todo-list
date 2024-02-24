@@ -39,6 +39,7 @@ DOMController.prototype.removeTodo = function(container) {
 
 DOMController.prototype.renderProject = function(project) {
     const container = document.createElement('div');
+    project.container = container;
 
     
 
