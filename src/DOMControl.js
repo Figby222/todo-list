@@ -54,7 +54,7 @@ DOMController.prototype.renderProject = function(project) {
     completeProject.addEventListener('click', (e) => {
         e.preventDefault();
 
-        this.removeProject(container);
+        this.removeElement(container);
     })
 
     container.appendChild(title.getContainer());
@@ -70,7 +70,7 @@ DOMController.prototype.renderProject = function(project) {
     this.insertElement(container);
 }
 
-DOMController.prototype.removeProject = function(project) {
+DOMController.prototype.removeElement = function(project) {
     project.remove();
 }
 

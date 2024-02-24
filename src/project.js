@@ -11,7 +11,6 @@ Project.prototype.removeTodo = function (todo) {
     if (index > -1) { // only splice if todo is found
         this.todoList.splice(index, 1);
     }
-    console.log(this);
 }
 
 Project.prototype.addTodo = function (todo) {
