@@ -19,7 +19,7 @@ DOMController.prototype.renderTodo = function (object, project) {
     completeButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        this.removeTodo(container); // remove from DOM
+        this.removeElement(container); // remove from DOM
         project.removeTodo(object); // remove from project
     });
 
@@ -33,7 +33,7 @@ DOMController.prototype.renderTodo = function (object, project) {
     return container;
 }
 
-DOMController.prototype.removeTodo = function(container) {
+DOMController.prototype.removeElement = function(container) {
     container.remove();
 }
 
@@ -68,10 +68,6 @@ DOMController.prototype.renderProject = function(project) {
 
     container.style.border = '2px solid black';
     this.insertElement(container);
-}
-
-DOMController.prototype.removeElement = function(project) {
-    project.remove();
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
