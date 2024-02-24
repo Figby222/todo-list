@@ -30,7 +30,6 @@ let project = new Project('title', 'description', todoList);
 
 DOMCtrl.renderProject(project);
 project.addTodo(new Todo('test', 'desc', '2024-10-04', 'low', ['test']))
-DOMCtrl.removeElement(project.container);
 
 DOMCtrl.renderProject(project);
 

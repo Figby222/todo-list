@@ -1,6 +1,9 @@
 import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input';
+import Project from './project.js';
+
 const DOMController = function() {
     this.body = document.querySelector('body');
+    this.currentRenderedProject;
 }
 
 DOMController.prototype.renderTodo = function (object, project) {
@@ -38,13 +41,19 @@ DOMController.prototype.removeElement = function(container) {
 }
 
 DOMController.prototype.renderProject = function(project) {
+    if (this.currentRenderedProject) {
+        this.removeElement(this.currentRenderedProject.container);
+    }
+
+    this.currentRenderedProject = project;
+
     const container = document.createElement('div');
     project.container = container;
 
     
 
     const title = new DOMTextInput(project, 'Title: ', `${project.title}-title`, project.title)
-    const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
+    // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
 
     
 
@@ -58,7 +67,7 @@ DOMController.prototype.renderProject = function(project) {
     })
 
     container.appendChild(title.getContainer());
-    container.appendChild(description.getContainer());
+    // container.appendChild(description.getContainer());
 
     project.todoList.forEach((todo) => {
         container.appendChild(this.renderTodo(todo, project));
@@ -66,7 +75,7 @@ DOMController.prototype.renderProject = function(project) {
 
     container.appendChild(completeProject);
 
-    container.style.border = '2px solid black';
+    container.style.border = '2px solid red';
     this.insertElement(container);
 }
 
