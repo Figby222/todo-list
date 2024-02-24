@@ -1,5 +1,6 @@
 import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input';
 import Project from './project.js';
+import Todo from './createTodo.js';
 
 const DOMController = function() {
     this.body = document.querySelector('body');
@@ -83,6 +84,26 @@ DOMController.prototype.renderProject = function(project) {
 
     
 
+    
+    container.appendChild(title.getContainer());
+    // container.appendChild(description.getContainer());
+    
+    project.todoList.forEach((todo) => {
+        container.appendChild(this.renderTodo(todo, project));
+    });
+    
+    const newTodoButton = document.createElement('button');
+    newTodoButton.textContent = 'new todo';
+    
+    newTodoButton.addEventListener('click', (e) => {
+        e.preventDefault;
+
+        const newTodo = new Todo();
+
+        project.addTodo(newTodo);
+
+        this.renderProject(project);
+    });
     const completeProject = document.createElement('button');
     completeProject.textContent = 'Complete Project';
 
@@ -92,13 +113,7 @@ DOMController.prototype.renderProject = function(project) {
         this.removeElement(container);
     })
 
-    container.appendChild(title.getContainer());
-    // container.appendChild(description.getContainer());
-
-    project.todoList.forEach((todo) => {
-        container.appendChild(this.renderTodo(todo, project));
-    });
-
+    container.appendChild(newTodoButton);
     container.appendChild(completeProject);
 
     container.style.border = '2px solid red';
