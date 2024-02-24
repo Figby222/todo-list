@@ -27,11 +27,21 @@ todoList.push(myTodo);
 todoList.push(getPizza);
 
 let project = new Project('title', 'description', todoList);
-
+DOMCtrl.createProject(project);
 DOMCtrl.renderProject(project);
-project.addTodo(new Todo('test', 'desc', '2024-10-04', 'low', ['test']))
 
-DOMCtrl.renderProject(project);
+let todoList2 = [];
+todoList2.push(new Todo('TestTodo', 'hello', '2021-04-04', 'high', ['test']));
+todoList2.push(new Todo('hi', 'hi', '2024-02-24', 'high', ['test']));
+let project2 = new Project('myProject', 'description', todoList2);
+
+DOMCtrl.createProject(project2);
+
+
+// DOMCtrl.renderProject(project);
+// project.addTodo(new Todo('test', 'desc', '2024-10-04', 'low', ['test']))
+
+// DOMCtrl.renderProject(project);
 
 // project.forEach((todo) => {
 //     DOMCtrl.insertElement(DOMCtrl.renderTodo(todo));

@@ -40,6 +40,21 @@ DOMController.prototype.removeElement = function(container) {
     container.remove();
 }
 
+DOMController.prototype.createProject = function(project) {
+    const DOMNav = document.querySelector('.projects');
+
+    const projectButton = document.createElement('button');
+    projectButton.textContent = project.title;
+    
+    projectButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        this.renderProject(project);
+    });
+
+    DOMNav.appendChild(projectButton);
+}
+
 DOMController.prototype.renderProject = function(project) {
     if (this.currentRenderedProject) {
         this.removeElement(this.currentRenderedProject.container);
