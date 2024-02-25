@@ -24,42 +24,44 @@ DOMController.prototype.renderTodo = function (object, project) {
     const title = new DOMTextInput(object, 'Title: ', 'title', object.title);
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
 
-    if (object.loadDetails) {
-        const description = new DOMTextInput(object, 'Description', 'description', object.description);
-        const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
-        const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
-        const completeButton = document.createElement('button');
-        completeButton.textContent = 'Complete Todo';
+    const description = new DOMTextInput(object, 'Description', 'description', object.description);
+    const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
+    const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
+    const completeButton = document.createElement('button');
+    completeButton.textContent = 'Complete Todo';
 
-        completeButton.addEventListener('click', (e) => {
-            e.preventDefault();
+    completeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        this.removeElement(container); // remove from DOM
+        project.removeTodo(object); // remove from project
+    });
+
     
-            this.removeElement(container); // remove from DOM
-            project.removeTodo(object); // remove from project
-        });
-
+    const loadDetailsButton = document.createElement('button');
+    loadDetailsButton.textContent = '^';
+    
+    loadDetailsButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        object.loadDetails = !(object.loadDetails);
+        console.log(object.loadDetails);
+        
+        // container.remove();
+        
+        this.renderProject(project);
+    })
+    
+    container.appendChild(title.getContainer());
+    container.appendChild(dueDate.getContainer());
+    
+    if (object.loadDetails) {
         container.appendChild(description.getContainer());
         container.appendChild(completed.getContainer());
         container.appendChild(priority.getContainer());
         container.appendChild(completeButton);
     }
 
-    const loadDetailsButton = document.createElement('button');
-    loadDetailsButton.textContent = '^';
-
-    loadDetailsButton.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        object.loadDetails = !(object.loadDetails);
-        console.log(object.loadDetails);
-
-        // container.remove();
-
-        this.renderProject(project);
-    })
-
-    container.appendChild(title.getContainer());
-    container.appendChild(dueDate.getContainer());
     container.appendChild(loadDetailsButton);
 
     return container;
