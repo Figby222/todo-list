@@ -3,6 +3,9 @@ import Project from './project.js';
 import DOMController from './DOMControl.js';
 import StorageInterface from './storage.js';
 
+const storage = new StorageInterface();
+const DOMCtrl = new DOMController();
+
 console.log('hi');
 
 let todoList = [];
@@ -13,7 +16,7 @@ console.log(myTodo);
 const element = document.createElement('div');
 element.textContent = 'hello';
 
-const DOMCtrl = new DOMController();
+
 
 // DOMCtrl.insertElement(element);
 
@@ -48,6 +51,10 @@ DOMCtrl.createProject(project2);
 //     DOMCtrl.insertElement(DOMCtrl.renderTodo(todo));
 // })
 
-const storage = new StorageInterface();
 
-storage.populateStorage(project);
+
+storage.populateStorage(project2);
+
+console.log(storage.getObject(JSON.stringify(project2)));
+
+console.log(localStorage.getItem(project2.title));
