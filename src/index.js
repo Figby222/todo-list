@@ -46,3 +46,5 @@ DOMCtrl.createProject(project2);
 // project.forEach((todo) => {
 //     DOMCtrl.insertElement(DOMCtrl.renderTodo(todo));
 // })
+
+localStorage.populate
