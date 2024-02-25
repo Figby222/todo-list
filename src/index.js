@@ -1,6 +1,7 @@
 import Todo from './createTodo.js';
 import Project from './project.js';
 import DOMController from './DOMControl.js';
+import StorageInterface from './storage.js';
 
 console.log('hi');
 
@@ -47,4 +48,6 @@ DOMCtrl.createProject(project2);
 //     DOMCtrl.insertElement(DOMCtrl.renderTodo(todo));
 // })
 
-localStorage.populate
+const storage = new StorageInterface();
+
+storage.populateStorage(project);
