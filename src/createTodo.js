@@ -5,7 +5,7 @@ const Todo = function (title = '', description = '', dueDate = '', priority = 'm
     this.priorty = priority;
     this.notes = notes;
     this.complete = false;
-
+    this.loadDetails = true;
 }
 
 Todo.prototype.setTitle = function(text) {

@@ -22,8 +22,13 @@ DOMController.prototype.renderTodo = function (object, project) {
     container.style.border = '2px solid black';
 
     const title = new DOMTextInput(object, 'Title: ', 'title', object.title);
-    const description = new DOMTextInput(object, 'Description', 'description', object.description);
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
+
+    if (object.loadDetails) {
+        
+    }
+
+    const description = new DOMTextInput(object, 'Description', 'description', object.description);
     const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
     const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
     const completeButton = document.createElement('button');
@@ -77,8 +82,6 @@ DOMController.prototype.renderProject = function(project) {
 
     const container = document.createElement('div');
     project.container = container;
-
-    
 
     const title = new DOMTextInput(project, 'Title: ', 'title', project.title)
     // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
