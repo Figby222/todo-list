@@ -25,28 +25,42 @@ DOMController.prototype.renderTodo = function (object, project) {
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
 
     if (object.loadDetails) {
-        
+        const description = new DOMTextInput(object, 'Description', 'description', object.description);
+        const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
+        const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Complete Todo';
+
+        completeButton.addEventListener('click', (e) => {
+            e.preventDefault();
+    
+            this.removeElement(container); // remove from DOM
+            project.removeTodo(object); // remove from project
+        });
+
+        container.appendChild(description.getContainer());
+        container.appendChild(completed.getContainer());
+        container.appendChild(priority.getContainer());
+        container.appendChild(completeButton);
     }
 
-    const description = new DOMTextInput(object, 'Description', 'description', object.description);
-    const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
-    const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
-    const completeButton = document.createElement('button');
-    completeButton.textContent = 'Complete Todo';
-    
-    completeButton.addEventListener('click', (e) => {
+    const loadDetailsButton = document.createElement('button');
+    loadDetailsButton.textContent = '^';
+
+    loadDetailsButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        this.removeElement(container); // remove from DOM
-        project.removeTodo(object); // remove from project
-    });
+        object.loadDetails = !(object.loadDetails);
+        console.log(object.loadDetails);
+
+        // container.remove();
+
+        this.renderProject(project);
+    })
 
     container.appendChild(title.getContainer());
     container.appendChild(dueDate.getContainer());
-    container.appendChild(description.getContainer());
-    container.appendChild(completed.getContainer());
-    container.appendChild(priority.getContainer());
-    container.appendChild(completeButton);
+    container.appendChild(loadDetailsButton);
 
     return container;
 }
