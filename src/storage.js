@@ -1,12 +1,16 @@
 const StorageInterface = function() {
-    localStorage.setItem('projects', []);
+    this.projects = [];
 };
 
 StorageInterface.prototype.populateStorage = function(project) {
-    const projectJSON = JSON.stringify(project);
-    console.log(projectJSON);
+    const projectsJSON = JSON.stringify(this.projects);
+    console.log(projectsJSON);
 
-    localStorage.setItem(project.title, projectJSON);
+    const projectIndex = this.projects.indexOf(project);
+    console.log(projectIndex);
+    this.projects[projectIndex] = project; // save project changes onto projects
+
+    localStorage.setItem('projects', projectsJSON);
 
     // might have to modify since project.title is always changing
 };

@@ -3,6 +3,7 @@ import Project from './project.js';
 import Todo from './createTodo.js';
 import StorageInterface from './storage.js';
 
+const storage = new StorageInterface();
 
 const DOMController = function() {
     this.body = document.querySelector('body');
@@ -88,13 +89,17 @@ DOMController.prototype.createProject = function(project) {
 
     DOMNav.insertBefore(projectButton, this.addProjectButton);
 
+    storage.projects.push(project);
     this.renderProject(project);
 }
 
 DOMController.prototype.renderProject = function(project) {
     if (this.currentRenderedProject) {
+        storage.populateStorage(this.currentRenderedProject);
         this.removeElement(this.currentRenderedProject.container);
     }
+
+    storage.populateStorage(project);
 
     this.currentRenderedProject = project;
 
