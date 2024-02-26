@@ -1,6 +1,5 @@
 const StorageInterface = function() {
     localStorage.setItem('projects', []);
-    this.projects = [];
 };
 
 StorageInterface.prototype.populateStorage = function(project) {
