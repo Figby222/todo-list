@@ -5,13 +5,27 @@ import Todo from './createTodo.js';
 const DOMController = function() {
     this.body = document.querySelector('body');
     this.currentRenderedProject;
+
     this.addProjectButton = document.querySelector('.newProject');
+    this.dialog = document.querySelector('.create-project');
+    this.projectSubmitButton = document.querySelector('.project-submit');
+
+    this.projectSubmitButton.addEventListener('click', (e) => {
+        const titleInput = document.querySelector('#project-title');
+
+        if (titleInput.value) {
+            this.dialog.open = false;
+
+            const project = new Project(titleInput.value);
+            this.createProject(project);
+        }
+    });
 
     this.addProjectButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const project = new Project();
-        this.createProject(project);
+        this.dialog.open = true;
+
     });
 
 }
@@ -75,12 +89,17 @@ DOMController.prototype.createProject = function(project) {
     const DOMNav = document.querySelector('.projects');
     
     const projectButton = document.createElement('button');
+    
+    
+
+
     projectButton.textContent = project.title;
     projectButton.classList.add(project.title);
 
     projectButton.addEventListener('click', (e) => {
         e.preventDefault();
 
+    
         this.renderProject(project);
     });
 
@@ -99,13 +118,15 @@ DOMController.prototype.renderProject = function(project) {
     const container = document.createElement('div');
     project.container = container;
 
-    const title = new DOMTextInput(project, 'Title: ', 'title', project.title)
+    // const title = new DOMTextInput(project, 'Title: ', 'title', project.title)
+    const title = document.createElement('div');
+    title.textContent = project.title;
     // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
 
     
 
     
-    container.appendChild(title.getContainer());
+    container.appendChild(title);
     // container.appendChild(description.getContainer());
     
     project.todoList.forEach((todo) => {
