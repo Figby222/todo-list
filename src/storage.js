@@ -7,6 +7,10 @@ StorageInterface.prototype.populateStorage = function(project) {
     const projectJSON = JSON.stringify(project);
     console.log(projectJSON);
 
+    const projectIndex = this.projects.indexOf(project);
+    console.log(projectIndex);
+    this.projects[projectIndex] = project;
+
     localStorage.setItem(project.title, projectJSON);
 
     // might have to modify since project.title is always changing
