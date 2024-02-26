@@ -1,6 +1,8 @@
 import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input';
 import Project from './project.js';
 import Todo from './createTodo.js';
+import StorageInterface from './storage.js';
+
 
 const DOMController = function() {
     this.body = document.querySelector('body');
