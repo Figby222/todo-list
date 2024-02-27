@@ -36,6 +36,89 @@ const DOMController = function() {
 
 }
 
+DOMController.prototype.removeElement = function(container) {
+    container.remove();
+}
+
+DOMController.prototype.createProject = function(project) {
+    const DOMNav = document.querySelector('.projects');
+    
+    const projectButton = document.createElement('button');
+    projectButton.classList.add('project-button');
+    
+    projectButton.textContent = project.title;
+    
+    project.class = project.title.split(' ');
+    project.class = project.class.join('-').toLowerCase();
+    
+    projectButton.classList.add(project.class);
+    
+    projectButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        
+        this.renderProject(project);
+    });
+    
+    DOMNav.insertBefore(projectButton, this.addProjectButton);
+    
+    this.renderProject(project);
+}
+
+DOMController.prototype.renderProject = function(project) {
+    if (this.currentRenderedProject) {
+        this.removeElement(this.currentRenderedProject.container);
+    }
+    
+    storage.populateStorage(project);
+    
+    this.currentRenderedProject = project;
+    
+    const container = document.createElement('div');
+    container.classList.add('project');
+    project.container = container;
+    
+    const title = document.createElement('div');
+    title.textContent = project.title;
+    
+    container.appendChild(title);
+    // container.appendChild(description.getContainer());
+    
+    project.todoList.forEach((todo) => {
+        container.appendChild(this.renderTodo(todo, project));
+    });
+    
+    const newTodoButton = document.createElement('button');
+    newTodoButton.textContent = 'new todo';
+    
+    newTodoButton.addEventListener('click', (e) => {
+        e.preventDefault;
+        
+        const newTodo = new Todo();
+        
+        project.addTodo(newTodo);
+        
+        this.renderProject(project);
+    });
+    
+    const completeProject = document.createElement('button');
+    completeProject.textContent = 'Complete Project';
+    
+    completeProject.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectButton = document.querySelector(`.projects > .${project.class}`);
+        
+        this.removeElement(container);
+        projectButton.remove();
+        storage.removeProject(project);
+    })
+    
+    container.appendChild(newTodoButton);
+    container.appendChild(completeProject);
+    
+    this.insertElement(container, 'div.projects');
+}
+
 DOMController.prototype.renderTodo = function (object, project) {
     const container = document.createElement('div');
 
@@ -82,89 +165,6 @@ DOMController.prototype.renderTodo = function (object, project) {
     container.appendChild(loadDetailsButton);
 
     return container;
-}
-
-DOMController.prototype.removeElement = function(container) {
-    container.remove();
-}
-
-DOMController.prototype.createProject = function(project) {
-    const DOMNav = document.querySelector('.projects');
-    
-    const projectButton = document.createElement('button');
-    projectButton.classList.add('project-button');
-   
-    projectButton.textContent = project.title;
-
-    project.class = project.title.split(' ');
-    project.class = project.class.join('-').toLowerCase();
-
-    projectButton.classList.add(project.class);
-
-    projectButton.addEventListener('click', (e) => {
-        e.preventDefault();
-
-    
-        this.renderProject(project);
-    });
-
-    DOMNav.insertBefore(projectButton, this.addProjectButton);
-    
-    this.renderProject(project);
-}
-
-DOMController.prototype.renderProject = function(project) {
-    if (this.currentRenderedProject) {
-        this.removeElement(this.currentRenderedProject.container);
-    }
-
-    storage.populateStorage(project);
-
-    this.currentRenderedProject = project;
-
-    const container = document.createElement('div');
-    container.classList.add('project');
-    project.container = container;
-    
-    const title = document.createElement('div');
-    title.textContent = project.title;
-    
-    container.appendChild(title);
-    // container.appendChild(description.getContainer());
-    
-    project.todoList.forEach((todo) => {
-        container.appendChild(this.renderTodo(todo, project));
-    });
-    
-    const newTodoButton = document.createElement('button');
-    newTodoButton.textContent = 'new todo';
-    
-    newTodoButton.addEventListener('click', (e) => {
-        e.preventDefault;
-
-        const newTodo = new Todo();
-
-        project.addTodo(newTodo);
-
-        this.renderProject(project);
-    });
-
-    const completeProject = document.createElement('button');
-    completeProject.textContent = 'Complete Project';
-
-    completeProject.addEventListener('click', (e) => {
-        e.preventDefault();
-        const projectButton = document.querySelector(`.projects > .${project.class}`);
-        
-        this.removeElement(container);
-        projectButton.remove();
-        storage.removeProject(project);
-    })
-
-    container.appendChild(newTodoButton);
-    container.appendChild(completeProject);
-
-    this.insertElement(container, 'div.projects');
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
