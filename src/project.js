@@ -1,8 +1,15 @@
-const Project = function(title = 'project', description = 'stuff', todoList = []) {
+const Project = function
+(
+    title = 'project', 
+    description = 'stuff', 
+    todoList = [], 
+    defaultProject = false
+) {
     this.title = title;
     this.description = description;
     this.todoList = todoList;
     this.container;
+    this.defaultProject;
 }
 
 Project.prototype.removeTodo = function (todo) {
