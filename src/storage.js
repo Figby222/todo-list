@@ -6,12 +6,14 @@ const StorageInterface = function() {
 StorageInterface.prototype.populateStorage = function(project) {
     // console.log(projectJSON);
     
-    const projectIndex = projects.indexOf(project);
-    
-    if (projectIndex > -1) { // check if project exists in projects
-        projects[projectIndex] = project;
-    } else { 
-        projects.push(project) 
+    if (project) {
+        const projectIndex = projects.indexOf(project);
+        
+        if (projectIndex > -1) { // check if project exists in projects
+            projects[projectIndex] = project;
+        } else { 
+            projects.push(project) 
+        }
     }
     
     
@@ -30,14 +32,10 @@ StorageInterface.prototype.getObject = function(objectJSON) {
     return JSON.parse(objectJSON);
 };
 
-StorageInterface.prototype.addProject = function(project) {
-    // add project to a let projects so that projects is basically static
-    projects.push(project);
-}
-
 StorageInterface.prototype.removeProject = function(project) {
     projects.splice(projects.indexOf(project), 1);
-    localStorage.removeItem(project.title);
+    // localStorage.removeItem(project.title);
+    this.populateStorage();
 }
 
 export default StorageInterface;
