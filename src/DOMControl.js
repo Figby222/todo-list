@@ -83,6 +83,7 @@ DOMController.prototype.renderProject = function(project) {
     
     const title = document.createElement('div');
     title.textContent = project.title;
+    title.classList.add('project-title');
     
     container.appendChild(title);
     // container.appendChild(description.getContainer());
