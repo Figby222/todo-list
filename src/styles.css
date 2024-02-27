@@ -49,6 +49,7 @@ nav.projects {
 }
 
 div.project {
+    grid-row: 3 / -1;
     background-color: white;
     border: 10px solid red;
     display: grid;
