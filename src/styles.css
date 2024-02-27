@@ -35,8 +35,18 @@ nav.projects {
     border-radius: 10px;
 }
 
-div.projects {
+div.project {
     background-color: white;
     border: 10px solid red;
     display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.todos {
+    display: grid;
+}
+
+.todo {
+    background-color: gray;
+    border-radius: 10px;
 }
