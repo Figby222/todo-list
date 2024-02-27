@@ -92,6 +92,7 @@ DOMController.prototype.createProject = function(project) {
     const DOMNav = document.querySelector('.projects');
     
     const projectButton = document.createElement('button');
+    projectButton.classList.add('project-button');
    
     projectButton.textContent = project.title;
 
