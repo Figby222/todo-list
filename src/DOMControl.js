@@ -93,10 +93,7 @@ DOMController.prototype.createProject = function(project) {
     const DOMNav = document.querySelector('.projects');
     
     const projectButton = document.createElement('button');
-    
-    
-
-
+   
     projectButton.textContent = project.title;
 
     project.class = project.title.split(' ');
@@ -118,11 +115,8 @@ DOMController.prototype.createProject = function(project) {
 
 DOMController.prototype.renderProject = function(project) {
     if (this.currentRenderedProject) {
-        // storage.populateStorage(this.currentRenderedProject);
         this.removeElement(this.currentRenderedProject.container);
     }
-
-    // console.log(project.title);
 
     storage.populateStorage(project);
 
@@ -130,14 +124,9 @@ DOMController.prototype.renderProject = function(project) {
 
     const container = document.createElement('div');
     project.container = container;
-
-    // const title = new DOMTextInput(project, 'Title: ', 'title', project.title)
+    
     const title = document.createElement('div');
     title.textContent = project.title;
-    // const description = new DOMTextInput(project, 'Description: ', `${project.title}-description`, project.description);
-
-    
-
     
     container.appendChild(title);
     // container.appendChild(description.getContainer());
