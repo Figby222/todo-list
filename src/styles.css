@@ -57,6 +57,10 @@ div.project {
     overflow: auto;
 }
 
+.project-title {
+    background-color: orange;
+}
+
 .todos {
     padding: 30px;
     display: grid;
