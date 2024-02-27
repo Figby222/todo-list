@@ -99,10 +99,10 @@ DOMController.prototype.createProject = function(project) {
 
     projectButton.textContent = project.title;
 
-    let projectClass = project.title.split(' ');
-    projectClass = projectClass.join('-');
+    project.class = project.title.split(' ');
+    project.class = project.class.join('-');
 
-    projectButton.classList.add(projectClass);
+    projectButton.classList.add(project.class);
 
     projectButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -164,7 +164,7 @@ DOMController.prototype.renderProject = function(project) {
 
     completeProject.addEventListener('click', (e) => {
         e.preventDefault();
-        const projectButton = document.querySelector(`.projects > .${project.title}`);
+        const projectButton = document.querySelector(`.projects > .${project.class}`);
         
         this.removeElement(container);
         projectButton.remove();
