@@ -153,6 +153,7 @@ DOMController.prototype.renderProject = function(project) {
 
         this.renderProject(project);
     });
+
     const completeProject = document.createElement('button');
     completeProject.textContent = 'Complete Project';
 
@@ -162,6 +163,7 @@ DOMController.prototype.renderProject = function(project) {
 
         this.removeElement(container);
         projectButton.remove();
+        storage.removeProject(project);
 
     })
 

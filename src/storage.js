@@ -25,6 +25,7 @@ StorageInterface.prototype.addProject = function(project) {
 
 StorageInterface.prototype.removeProject = function(project) {
     this.projects.splice(this.projects.indexOf(project), 1);
+    localStorage.removeItem(project.title);
 }
 
 export default StorageInterface;
