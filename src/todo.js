@@ -5,7 +5,7 @@ const Todo = function (title = '', description = '', dueDate = '', priority = 'm
     this.priorty = priority;
     this.notes = notes;
     this.complete = false;
-    this.loadDetails = false;
+    this.expanded = false;
 }
 
 Todo.prototype.changeCompletionStatus = function() {

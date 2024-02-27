@@ -142,13 +142,13 @@ DOMController.prototype.renderTodo = function (object, project) {
     });
 
     
-    const loadDetailsButton = document.createElement('button');
-    loadDetailsButton.textContent = '^';
+    const expandedButton = document.createElement('button');
+    expandedButton.textContent = '^';
     
-    loadDetailsButton.addEventListener('click', (e) => {
+    expandedButton.addEventListener('click', (e) => {
         e.preventDefault();
         
-        object.loadDetails = !(object.loadDetails);
+        object.expanded = !(object.expanded);
         
         // container.remove();
         
@@ -158,13 +158,13 @@ DOMController.prototype.renderTodo = function (object, project) {
     container.appendChild(title.getContainer());
     container.appendChild(dueDate.getContainer());
     
-    if (object.loadDetails) {
+    if (object.expanded) {
         container.appendChild(description.getContainer());
         container.appendChild(priority.getContainer());
     }
     
     container.appendChild(completeButton);
-    container.appendChild(loadDetailsButton);
+    container.appendChild(expandedButton);
 
     return container;
 }
