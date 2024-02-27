@@ -1,3 +1,7 @@
+:root {
+
+}
+
 * {
     box-sizing: border-box;
 }
@@ -68,6 +72,9 @@ div.project {
     border-radius: 30px;
 }
 
+.todo > div {
+    display: grid;
+}
 label {
     font-weight: bold;
 }
