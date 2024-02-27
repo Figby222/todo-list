@@ -74,6 +74,9 @@ DOMController.prototype.renderProject = function(project) {
     
     this.currentRenderedProject = project;
     
+    const DOMTodos = document.createElement('div');
+    DOMTodos.classList.add('todos');
+
     const container = document.createElement('div');
     container.classList.add('project');
     project.container = container;
@@ -85,7 +88,7 @@ DOMController.prototype.renderProject = function(project) {
     // container.appendChild(description.getContainer());
     
     project.todoList.forEach((todo) => {
-        container.appendChild(this.renderTodo(todo, project));
+        DOMTodos.appendChild(this.renderTodo(todo, project));
     });
     
     const newTodoButton = document.createElement('button');
@@ -112,7 +115,7 @@ DOMController.prototype.renderProject = function(project) {
         projectButton.remove();
         storage.removeProject(project);
     })
-    
+    container.appendChild(DOMTodos);
     container.appendChild(newTodoButton);
     container.appendChild(completeProject);
     
