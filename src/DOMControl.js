@@ -163,7 +163,7 @@ DOMController.prototype.renderProject = function(project) {
     container.appendChild(newTodoButton);
     container.appendChild(completeProject);
 
-    this.insertElement(container, '.todos');
+    this.insertElement(container, 'div.projects');
 }
 
 DOMController.prototype.insertElement = (element, query = 'body') => {
