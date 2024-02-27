@@ -39,6 +39,11 @@ nav.projects {
     border-radius: 10px;
 }
 
+.newProject {
+    max-width: 50px;
+    font-size: 2rem;
+}
+
 div.project {
     background-color: white;
     border: 10px solid red;
