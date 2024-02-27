@@ -1,5 +1,5 @@
 :root {
-
+    --todo-color: rgb(253, 202, 108);
 }
 
 * {
@@ -68,13 +68,14 @@ div.project {
 .todo {
     padding: 30px;
     /* background-color: rgb(177, 177, 177); */
-    background-color: rgb(253, 202, 108);
+    background-color: var(--todo-color);
     border-radius: 30px;
 }
 
 .todo > div {
     display: grid;
 }
+
 label {
     font-weight: bold;
 }
