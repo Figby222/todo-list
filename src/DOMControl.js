@@ -22,6 +22,8 @@ const DOMController = function() {
             const project = new Project(titleInput.value);
             this.createProject(project);
         }
+
+        titleInput.value = '';
     });
 
     this.addProjectButton.addEventListener('click', (e) => {
@@ -96,7 +98,11 @@ DOMController.prototype.createProject = function(project) {
 
 
     projectButton.textContent = project.title;
-    projectButton.classList.add(project.title);
+
+    let projectClass = project.title.split(' ');
+    projectClass = projectClass.join('-');
+
+    projectButton.classList.add(projectClass);
 
     projectButton.addEventListener('click', (e) => {
         e.preventDefault();
