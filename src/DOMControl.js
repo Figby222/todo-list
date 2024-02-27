@@ -116,7 +116,7 @@ DOMController.prototype.renderProject = function(project) {
         this.removeElement(this.currentRenderedProject.container);
     }
 
-    console.log(project.title);
+    // console.log(project.title);
 
     storage.populateStorage(project);
 

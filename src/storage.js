@@ -22,11 +22,11 @@ StorageInterface.prototype.populateStorage = function(project) {
     const projectsJSON = JSON.stringify(projects);
     localStorage.setItem('projects', projectsJSON);
 
-    console.log(JSON.parse(localStorage.getItem('projects')));
+    // console.log(JSON.parse(localStorage.getItem('projects')));
     // might have to modify since project.title is always changing
 };
 
-StorageInterface.prototype.getProjects = () => projects;
+StorageInterface.prototype.getProjects = () => JSON.parse(localStorage.getItem('projects'));
 
 StorageInterface.prototype.getObject = function(objectJSON) {
     return JSON.parse(objectJSON);
