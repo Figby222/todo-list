@@ -9,7 +9,6 @@ const DOMCtrl = new DOMController();
 let storedProjects = storage.getProjects();
 
 if (!(storedProjects[0]) || !(storedProjects[0].defaultProject)) {
-    console.log(storedProjects);
     const defaultProject = new Project('Default Project');
     defaultProject.defaultProject = true;
 
