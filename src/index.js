@@ -1,4 +1,4 @@
-import Todo from './createTodo.js';
+import Todo from './todo.js';
 import Project from './project.js';
 import DOMController from './DOMControl.js';
 import StorageInterface from './storage.js';

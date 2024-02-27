@@ -1,6 +1,6 @@
 import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input';
 import Project from './project.js';
-import Todo from './createTodo.js';
+import Todo from './todo.js';
 import StorageInterface from './storage.js';
 
 const storage = new StorageInterface();
