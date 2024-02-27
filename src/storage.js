@@ -1,4 +1,5 @@
 let projects = [];
+
 const StorageInterface = function() {
 };
 
@@ -14,6 +15,8 @@ StorageInterface.prototype.populateStorage = function(project) {
 
     // might have to modify since project.title is always changing
 };
+
+StorageInterface.prototype.getProjects = () => projects;
 
 StorageInterface.prototype.getObject = function(objectJSON) {
     return JSON.parse(objectJSON);
