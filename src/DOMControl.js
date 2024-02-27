@@ -2,6 +2,7 @@ import { DOMTextInput, DOMDateInput, DOMCheckboxInput, DOMSelect } from './input
 import Project from './project.js';
 import Todo from './todo.js';
 import StorageInterface from './storage.js';
+import './styles.css';
 
 const storage = new StorageInterface();
 
