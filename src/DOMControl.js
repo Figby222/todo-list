@@ -130,7 +130,6 @@ DOMController.prototype.renderTodo = function (object, project) {
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
 
     const description = new DOMTextInput(object, 'Description', 'description', object.description);
-    const completed = new DOMCheckboxInput(object, 'Completed: ', 'completed', false);
     const priority = new DOMSelect(object, 'Priority: ', 'priority', ['Low', 'Medium', 'High']);
     const completeButton = document.createElement('button');
     completeButton.textContent = 'Complete Todo';
@@ -161,7 +160,6 @@ DOMController.prototype.renderTodo = function (object, project) {
     
     if (object.loadDetails) {
         container.appendChild(description.getContainer());
-        container.appendChild(completed.getContainer());
         container.appendChild(priority.getContainer());
         container.appendChild(completeButton);
     }
