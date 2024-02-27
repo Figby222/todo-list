@@ -31,6 +31,10 @@ nav.projects {
     overflow: auto;
 }
 
+.project-button {
+    border-radius: 10px;
+}
+
 div.projects {
     background-color: white;
     border: 10px solid red;
