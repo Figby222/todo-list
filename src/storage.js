@@ -11,8 +11,10 @@ StorageInterface.prototype.populateStorage = function(project) {
         
         if (projectIndex > -1) { // check if project exists in projects
             projects[projectIndex] = project;
+        } else if (project.defaultProject) {
+            projects.unshift(project);
         } else { 
-            projects.push(project) 
+            projects.push(project);
         }
     }
     

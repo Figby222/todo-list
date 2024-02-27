@@ -100,7 +100,7 @@ DOMController.prototype.createProject = function(project) {
     projectButton.textContent = project.title;
 
     project.class = project.title.split(' ');
-    project.class = project.class.join('-');
+    project.class = project.class.join('-').toLowerCase();
 
     projectButton.classList.add(project.class);
 
