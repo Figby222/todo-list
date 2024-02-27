@@ -59,6 +59,9 @@ div.project {
 
 .project-title {
     background-color: orange;
+    text-align: center;
+    color: white;
+    font-weight: bold;
 }
 
 .todos {
