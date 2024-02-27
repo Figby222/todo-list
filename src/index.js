@@ -32,7 +32,6 @@ todoList.push(getPizza);
 
 let project = new Project('title', 'description', todoList);
 DOMCtrl.createProject(project);
-DOMCtrl.renderProject(project);
 
 let todoList2 = [];
 todoList2.push(new Todo('TestTodo', 'hello', '2021-04-04', 'high', ['test']));
@@ -52,9 +51,6 @@ DOMCtrl.createProject(project2);
 // })
 
 
+// console.log(storage.getObject(JSON.stringify(project2)));
 
-storage.populateStorage(project2);
-
-console.log(storage.getObject(JSON.stringify(project2)));
-
-console.log(localStorage.getItem(project2.title));
+// console.log(localStorage.getItem(project2.title));

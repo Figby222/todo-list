@@ -4,15 +4,23 @@ const StorageInterface = function() {
 };
 
 StorageInterface.prototype.populateStorage = function(project) {
-    const projectJSON = JSON.stringify(project);
-    console.log(projectJSON);
+    const projectsJSON = JSON.stringify(projects);
+    // console.log(projectJSON);
 
     const projectIndex = projects.indexOf(project);
-    console.log(projectIndex);
-    projects[projectIndex] = project;
 
-    localStorage.setItem(project.title, projectJSON);
+    if (projectIndex > -1) { // check if project exists in projects
+        projects[projectIndex] = project;
+    } else { 
+        projects.push(project) 
+    }
 
+
+    // console.log(projectIndex);
+
+    localStorage.setItem('projects', projectsJSON);
+
+    console.log(JSON.parse(localStorage.getItem('projects')));
     // might have to modify since project.title is always changing
 };
 

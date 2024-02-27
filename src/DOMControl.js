@@ -62,7 +62,6 @@ DOMController.prototype.renderTodo = function (object, project) {
         e.preventDefault();
         
         object.loadDetails = !(object.loadDetails);
-        console.log(object.loadDetails);
         
         // container.remove();
         
@@ -108,16 +107,18 @@ DOMController.prototype.createProject = function(project) {
 
     DOMNav.insertBefore(projectButton, this.addProjectButton);
 
-    storage.addProject(project);
+    // storage.addProject(project);
     
     this.renderProject(project);
 }
 
 DOMController.prototype.renderProject = function(project) {
     if (this.currentRenderedProject) {
-        storage.populateStorage(this.currentRenderedProject);
+        // storage.populateStorage(this.currentRenderedProject);
         this.removeElement(this.currentRenderedProject.container);
     }
+
+    console.log(project.title);
 
     storage.populateStorage(project);
 
@@ -160,11 +161,10 @@ DOMController.prototype.renderProject = function(project) {
     completeProject.addEventListener('click', (e) => {
         e.preventDefault();
         const projectButton = document.querySelector(`.projects > .${project.title}`);
-
+        
         this.removeElement(container);
         projectButton.remove();
         storage.removeProject(project);
-
     })
 
     container.appendChild(newTodoButton);
