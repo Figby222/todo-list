@@ -138,8 +138,8 @@ DOMController.prototype.renderTodo = function (object, project) {
     completeButton.addEventListener('click', (e) => {
         e.preventDefault();
 
-        this.removeElement(container); // remove from DOM
         project.removeTodo(object); // remove from project
+        this.renderProject(project);
     });
 
     
