@@ -124,6 +124,7 @@ DOMController.prototype.renderProject = function(project) {
 
 DOMController.prototype.renderTodo = function (object, project) {
     const container = document.createElement('div');
+    container.classList.add('todo');
 
     const title = new DOMTextInput(object, 'Title: ', 'title', object.title);
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
