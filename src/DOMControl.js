@@ -122,6 +122,7 @@ DOMController.prototype.renderProject = function(project) {
     this.currentRenderedProject = project;
 
     const container = document.createElement('div');
+    container.classList.add('project');
     project.container = container;
     
     const title = document.createElement('div');
