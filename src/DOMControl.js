@@ -39,8 +39,6 @@ const DOMController = function() {
 DOMController.prototype.renderTodo = function (object, project) {
     const container = document.createElement('div');
 
-    container.style.border = '2px solid black';
-
     const title = new DOMTextInput(object, 'Title: ', 'title', object.title);
     const dueDate = new DOMDateInput(object, 'Date: ', 'dueDate', object.dueDate);
 
@@ -164,7 +162,6 @@ DOMController.prototype.renderProject = function(project) {
     container.appendChild(newTodoButton);
     container.appendChild(completeProject);
 
-    container.style.border = '2px solid red';
     this.insertElement(container, '.todos');
 }
 
