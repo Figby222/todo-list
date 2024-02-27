@@ -161,9 +161,9 @@ DOMController.prototype.renderTodo = function (object, project) {
     if (object.loadDetails) {
         container.appendChild(description.getContainer());
         container.appendChild(priority.getContainer());
-        container.appendChild(completeButton);
     }
-
+    
+    container.appendChild(completeButton);
     container.appendChild(loadDetailsButton);
 
     return container;
