@@ -6,17 +6,19 @@ import StorageInterface from './storage.js';
 const storage = new StorageInterface();
 const DOMCtrl = new DOMController();
 
-const storedProjects = storage.getProjects();
+let storedProjects = storage.getProjects();
 
 if (!(storedProjects[0]) || !(storedProjects[0].defaultProject)) {
     const defaultProject = new Project('Default Project');
     defaultProject.defaultProject = true;
 
-    DOMCtrl.createProject(defaultProject);
+    storedProjects.unshift(defaultProject);
 }
 
 for (const project of storedProjects) {
-    DOMCtrl.createProject(project);
+    console.log(project);
+    const currentProject = new Project(project.title, project.description, project.todoList, project.defaultProject);
+    DOMCtrl.createProject(currentProject);
 }
 
 console.log('hi');
