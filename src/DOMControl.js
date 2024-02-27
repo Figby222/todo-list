@@ -108,7 +108,7 @@ DOMController.prototype.createProject = function(project) {
 
     DOMNav.insertBefore(projectButton, this.addProjectButton);
 
-    storage.projects.push(project);
+    storage.addProject(project);
     
     this.renderProject(project);
 }

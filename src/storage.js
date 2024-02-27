@@ -1,14 +1,14 @@
+let projects = [];
 const StorageInterface = function() {
-    this.projects = [];
 };
 
 StorageInterface.prototype.populateStorage = function(project) {
     const projectJSON = JSON.stringify(project);
     console.log(projectJSON);
 
-    const projectIndex = this.projects.indexOf(project);
+    const projectIndex = projects.indexOf(project);
     console.log(projectIndex);
-    this.projects[projectIndex] = project;
+    projects[projectIndex] = project;
 
     localStorage.setItem(project.title, projectJSON);
 
@@ -21,10 +21,11 @@ StorageInterface.prototype.getObject = function(objectJSON) {
 
 StorageInterface.prototype.addProject = function(project) {
     // add project to a let projects so that projects is basically static
+    projects.push(project);
 }
 
 StorageInterface.prototype.removeProject = function(project) {
-    this.projects.splice(this.projects.indexOf(project), 1);
+    projects.splice(projects.indexOf(project), 1);
     localStorage.removeItem(project.title);
 }
 
