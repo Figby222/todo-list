@@ -63,6 +63,7 @@ div.project {
 
 .todo {
     padding: 30px;
-    background-color: gray;
+    /* background-color: rgb(177, 177, 177); */
+    background-color: rgb(253, 202, 108);
     border-radius: 30px;
 }
