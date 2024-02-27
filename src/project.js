@@ -9,7 +9,7 @@ const Project = function
     this.description = description;
     this.todoList = todoList;
     this.container;
-    this.defaultProject;
+    this.defaultProject = defaultProject;
 }
 
 Project.prototype.removeTodo = function (todo) {
