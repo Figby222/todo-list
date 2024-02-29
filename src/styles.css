@@ -85,20 +85,6 @@ div.project {
 .todo > div {
     display: grid;
 
-    > input {
-        background-color: var(--todo-color);
-        color: red;
-        border-radius: 10px;
-        font-weight: bold
-    }
-
-    > input:focus {
-        background-color: white;
-    }
-
-    > input:hover {
-        background-color: white;
-    }
 }
 
 label {
@@ -108,4 +94,19 @@ label {
 dialog {
     background-color: var(--todo-color);
     padding: 4rem;
+}
+
+input {
+    background-color: var(--todo-color);
+    color: red;
+    border-radius: 10px;
+    font-weight: bold
+}
+
+input:focus {
+    background-color: white;
+}
+
+input:hover {
+    background-color: white;
 }
