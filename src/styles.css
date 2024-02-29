@@ -104,3 +104,8 @@ div.project {
 label {
     font-weight: bold;
 }
+
+dialog {
+    background-color: var(--todo-color);
+    padding: 4rem;
+}
